@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Logo() {
   return (
-    <Link href="/" className="flex cursor-pointer gap-3">
+    <Link href="/" className="flex cursor-pointer items-center gap-2">
       <Image
         src={logo}
         alt="logo"
@@ -13,7 +13,7 @@ export default function Logo() {
         width={100}
         className="h-16 max-h-16 w-min object-contain md:h-20"
       />
-      <p className="text-xl font-semibold md:text-3xl">Divity Audio</p>
+      <p className="text-lg font-medium md:text-3xl">Divity Audio</p>
     </Link>
   );
 }

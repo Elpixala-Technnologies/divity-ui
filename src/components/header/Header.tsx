@@ -20,6 +20,8 @@ import { TiShoppingCart } from "react-icons/ti";
 import { Button } from "../Button";
 import { header } from "@/data/wrapperData";
 import Logo from "../Logo";
+import { icon1 } from "@/assets";
+import { FiShoppingCart } from "react-icons/fi";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [show, setShow] = useState<string>("translate-y-0");
@@ -59,7 +61,7 @@ const Header = () => {
     if (typeof window !== "undefined") {
       if (window.scrollY > 200) {
         if (window.scrollY > lastScrollY && !isMobileMenuOpen) {
-          setShow("-translate-y-[100px]");
+          setShow("-translate-y-[85px]");
         } else {
           setShow("shadow-sm");
         }
@@ -91,41 +93,39 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 z-50 flex h-20 w-full items-center justify-between bg-white transition-transform duration-300 md:h-20 ${show}`}
+      className={`fixed top-0 z-50 h-20 w-full bg-white transition-transform duration-300 md:h-20 ${show}`}
     >
-      <Wrapper1 className="hidden h-20 items-center justify-between gap-4 rounded-lg md:flex">
+      <Wrapper className="flex w-full items-center justify-between py-2 max-md:hidden">
         {/* Logo with Link */}
-       <Logo />
-        {/* Menu */}
+        <Logo />
+        <div className="flex items-center gap-2 md:gap-4">
+          <RoundedButton />
+          <LoginSignUpQASection buttonType="LOG-IN" />
+          <CartButton />
+        </div>
+      </Wrapper>
+      <Wrapper
+        bgColor="bg-gray-300"
+        className="no-scrollbar overflow-x-auto pl-2 max-md:hidden"
+      >
         <Menu
           navItemsArray={navItems}
           activeItemId={activeItemId}
           onItemClick={handleNavItemClick}
         />
-        {/* Icons  */}
-        <div className="flex justify-center gap-4 text-xl text-blue-900">
-          <FaRegBell className="cursor-pointer hover:text-orange-500" />
-          <TiShoppingCart className="cursor-pointer hover:text-orange-500" />
-        </div>
-        <div className="flex gap-4">
-          <LoginSignUpQASection buttonType="LOG-IN" />
-          <LoginSignUpQASection buttonType="SIGN-UP" />
-        </div>
-      </Wrapper1>
+      </Wrapper>
       {/* Mobile Section */}
-      <Wrapper1 className="flex h-20 w-full items-center justify-between gap-3 bg-white md:hidden">
+      <Wrapper1 className="flex h-20 w-full items-center justify-between gap-3 border-b border-gray-300 bg-white md:hidden">
+        <div className="flex-center relative cursor-pointer rounded-full text-3xl text-blue-950 hover:bg-blue-500/5 md:hidden">
+          {isMobileMenuOpen ? (
+            <VscChromeClose onClick={handleMobileMenu} />
+          ) : (
+            <IoMenu onClick={handleMobileMenu} />
+          )}
+        </div>
         {/* Logo with Link */}
         <Logo />
-        <div className="flex gap-4">
-          <LoginSignUpQASection buttonType="LOG-IN" />
-          <div className="flex-center relative cursor-pointer rounded-full text-3xl text-blue-950 hover:bg-blue-500/5">
-            {isMobileMenuOpen ? (
-              <VscChromeClose onClick={handleMobileMenu} />
-            ) : (
-              <IoMenu onClick={handleMobileMenu} />
-            )}
-          </div>
-        </div>
+        <LoginSignUpQASection buttonType="LOG-IN" />
       </Wrapper1>
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
@@ -143,7 +143,27 @@ const Header = () => {
 
 export default Header;
 
+function RoundedButton() {
+  return (
+    <div className="flex items-center">
+      <div className="z-10 h-16 w-16 rounded-full bg-black">
+        <Image src={icon1} alt="logo" height={100} width={100} />
+      </div>
+      <div className="-ml-2 rounded-e-full bg-black px-4 py-2 font-semibold text-white">
+        Suzuki Swift VDI
+      </div>
+    </div>
+  );
+}
 
+function CartButton() {
+  return (
+    <Button variant="orange" className="flex items-center gap-2">
+      <FiShoppingCart />
+      <p>Cart</p>
+    </Button>
+  );
+}
 
 const LoginSignUpQASection = ({ buttonType = "LOG-IN" }: any) => {
   const [isClient, setIsClient] = useState(false);
@@ -243,29 +263,6 @@ const LoginSignUpQASection = ({ buttonType = "LOG-IN" }: any) => {
               Log In
             </Button>
           )}
-        </div>
-        {/* Pop-up Module */}
-        {/* {showPopUp && (
-          <LoginSignUpModule
-            closePopup={closePopup}
-            isLoginModule={isLoginModule}
-            setIsLoginModule={setIsLoginModule}
-          />
-        )} */}
-      </>
-    );
-  }
-  if (buttonType === "SIGN-UP" && !isUserLoggedIn) {
-    return (
-      <>
-        <div className="flex items-center gap-4">
-          <Button
-            onClick={openSignUpPopup}
-            variant="blue"
-            className="text-nowrap !px-2"
-          >
-            Sign up
-          </Button>
         </div>
         {/* Pop-up Module */}
         {/* {showPopUp && (

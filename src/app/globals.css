@@ -2,3 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* thin-scrollbar */
+  /* width */
+  .thin-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  /* Track */
+  .thin-scrollbar::-webkit-scrollbar-track {
+    background: #adadad;
+    border-radius: 5px;
+  }
+
+  /* Handle */
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background: orange;
+    border-radius: 2px;
+  }
+
+  /* Handle on hover */
+  .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .dangerouslySetInnerHTMLStyle {
+    @apply w-full text-zinc-800;
+    ul {
+      @apply ml-5;
+    }
+    .note {
+      @apply my-1 w-full text-wrap bg-orange-500 px-2 py-1 text-center text-white;
+    }
+    .list {
+      @apply list-disc pl-5;
+    }
+  }
+}
+
+.swiperStyle2 {
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    content: "";
+    background-color: rgb(255, 255, 255) !important;
+  }
+  .swiper-pagination {
+    background-color: rgba(255, 255, 255, 0.189) !important;
+    padding: 0.2rem 0.8rem !important;
+    border-radius: 50px;
+    width: max-content !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+  }
+  .swiper-pagination-bullet {
+    background: #000000 !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: #ffffffc3 !important;
+  }
+}

@@ -55,10 +55,10 @@ const SingleNavItem: React.FC<SingleNavItemProps> = ({
   return (
     <>
       <div>
-        <div className="flex items-center justify-between">
+        <div className="flex w-full items-center justify-between">
           <Link
             href={item.href ?? "#"}
-            className={`relative flex justify-between border-b border-zinc-200 px-5 py-3 transition-all hover:bg-orange-500 hover:text-white ${
+            className={`relative flex w-full justify-between border-b border-zinc-200 px-5 py-3 transition-all hover:bg-orange-500 hover:text-white ${
               activeItemId === item.id.toString()
                 ? "text-orange-500"
                 : "text-black"

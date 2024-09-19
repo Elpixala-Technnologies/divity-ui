@@ -4,7 +4,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const Menu = ({ navItemsArray, activeItemId, onItemClick }: any) => {
   return (
-    <ul className="hidden items-center gap-x-5 font-semibold text-blue-900 md:flex">
+    <ul className="hidden items-center justify-between gap-x-2 text-nowrap font-medium text-black md:flex">
       {navItemsArray?.map((item: any) => (
         <li key={item?.id} className="group relative transition-all">
           <Link

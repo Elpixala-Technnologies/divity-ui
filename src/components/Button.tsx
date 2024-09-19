@@ -14,7 +14,7 @@ const LoadingSvg = (
 );
 
 export const Button = ({
-  variant = "blue",
+  variant = "orange",
   className = "",
   children,
   onClick,
@@ -31,7 +31,7 @@ export const Button = ({
     style = `bg-transparent hover:bg-blue-900 hover:text-white border-2 border-blue-900 text-blue-900 font-semibold !rounded-full ${disabled ? "opacity-80 cursor-not-allowed" : ""}`;
   }
   if (variant === "orange") {
-    style = `hover:bg-orange-600 bg-orange-500 border-2 border-orange-500 text-white ${disabled ? "bg-zinc-800 cursor-not-allowed" : ""}`;
+    style = `hover:bg-orange-600 bg-orange-500 rounded-full border-2 border-orange-500 text-white ${disabled ? "bg-zinc-800 cursor-not-allowed" : ""}`;
   }
   if (variant === "whiteTransparent") {
     style = `hover:bg-opacity-10 bg-white border-2 border-white bg-opacity-30 text-white ${disabled ? "bg-zinc-200 cursor-not-allowed" : ""}`;
@@ -44,7 +44,7 @@ export const Button = ({
   }
   return (
     <button
-      className={`${style} ${className} flex-center w-min gap-2 rounded-lg px-10 py-2 capitalize active:scale-90`}
+      className={`${style} ${className} flex-center h-min w-min gap-2 px-8 py-2 capitalize active:scale-90`}
       onClick={onClick}
       type={type}
       {...props} // Spread all additional props onto the button
