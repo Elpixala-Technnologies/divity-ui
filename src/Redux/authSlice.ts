@@ -1,11 +1,10 @@
 "use client";
-import { ID } from "@/types/global";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface IAuthState {
 	authState: boolean;
-	userID: ID;
+	userID: string | any;
 	avatar?: string;
 	userName: string;
 	email: string;
